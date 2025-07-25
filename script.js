@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 bellStatus.className = 'bell-status alert';
                 
                 // Automatically reset after 3 seconds
-                setTimeout(resetTimer, 3000);
+                setTimeout(resetTimer(), 3000);
             }
         }, 1000);
     }

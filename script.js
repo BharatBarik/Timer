@@ -30,13 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
             warningBell.play();
             warningPlayed = true;
         }
-        
-        // Final alert when time is up
-        if (timeLeft <= 0) {
-            bellStatus.textContent = 'Time is up!';
-            bellStatus.className = 'bell-status alert';
-            finalBell.play();
-        }
     }
 
     function startTimer() {
@@ -54,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                isRunning = false;
-                startBtn.innerHTML = '<i class="fas fa-play"></i> Start';
-                startBtn.classList.remove('pause-btn');
-                startBtn.classList.add('start-btn');
+                finalBell.play();
+                bellStatus.textContent = 'Time is up!';
+                bellStatus.className = 'bell-status alert';
+                
+                // Automatically reset after 3 seconds
+                setTimeout(resetTimer, 3000);
             }
         }, 1000);
     }
